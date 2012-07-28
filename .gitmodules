@@ -1,0 +1,27 @@
+[submodule "bundle/fuzzyfinder_textmate"]
+	path = bundle/fuzzyfinder_textmate
+	url = https://github.com/leh/fuzzyfinder_textmate.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/haml"]
+	path = bundle/haml
+	url = https://github.com/tpope/vim-haml.git
+[submodule "bundle/handlebars"]
+	path = bundle/handlebars
+	url = https://github.com/nono/vim-handlebars.git
+[submodule "bundle/rails"]
+	path = bundle/rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "bundle/rake"]
+	path = bundle/rake
+	url = https://github.com/tpope/vim-rake.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/less"]
+	path = bundle/less
+	url = https://github.com/groenewege/vim-less.git
