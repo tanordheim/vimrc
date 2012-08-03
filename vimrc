@@ -193,7 +193,7 @@ set synmaxcol=500
 
 " set up the gui
 if has("gui_running")
-  set guifont=Bitstream\ Vera\ Sans\ Mono:h12
+  set guifont=Menlo\ Regular:h12
   set t_Co=256
   set transparency=5
   set guioptions-=T
