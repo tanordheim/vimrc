@@ -96,9 +96,10 @@ augroup END
 "-------------------------------------------------------------------------------
 " COLOR
 "-------------------------------------------------------------------------------
-:set t_Co=256 " 256 colors
-:set background=dark
-:color grb256
+set t_Co=256 " 256 colors
+set background=light
+let g:solarized_termcolors=256
+colorscheme solarized
 
 "-------------------------------------------------------------------------------
 " STATUS LINE
