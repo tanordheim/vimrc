@@ -125,6 +125,11 @@ function! MapCR()
 endfunction
 call MapCR()
 nnoremap <leader><leader> <c-^>
+" Change the current directory to the directory containing the current file
+nmap <silent> <Leader>cd :lcd %:h<CR>
+" Create the full directory tree containing the current file
+nmap <silent> <Leader>md :!mkdir -p %:p:h<CR>
+
 
 "-------------------------------------------------------------------------------
 " MULTIPURPOSE TAB KEY
