@@ -306,8 +306,8 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
-map <leader>c :w\|:!script/features<cr>
-map <leader>w :w\|:!script/features --profile wip<cr>
+map <leader>c :w\|:!scripts/features<cr>
+map <leader>w :w\|:!scripts/features --profile wip<cr>
 
 function! RunTestFile(...)
     if a:0
@@ -346,10 +346,10 @@ function! RunTests(filename)
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1
-        exec ":!script/features " . a:filename
+        exec ":!scripts/features " . a:filename
     else
-        if filereadable("script/test")
-            exec ":!script/test " . a:filename
+        if filereadable("scripts/test")
+            exec ":!scripts/test " . a:filename
         elseif filereadable("Gemfile")
             exec ":!bundle exec rspec --color " . a:filename
         else
