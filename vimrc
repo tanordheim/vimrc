@@ -97,7 +97,7 @@ augroup END
 " COLOR
 "-------------------------------------------------------------------------------
 set t_Co=256 " 256 colors
-set background=light
+set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
 
