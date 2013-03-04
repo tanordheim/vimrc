@@ -3,7 +3,7 @@
 "
 " vim:set ts=2 sts=2 sw=2 expandtab:
 
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 "-------------------------------------------------------------------------------
 " BASIC EDITING CONFIGURATION
@@ -103,7 +103,7 @@ colorscheme solarized
 "-------------------------------------------------------------------------------
 " STATUS LINE
 "-------------------------------------------------------------------------------
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline=%F\ %m\ %{fugitive#statusline()}\ %y%=%l,%c\ %P
 
 "-------------------------------------------------------------------------------
 " MISC KEY MAPS
@@ -128,7 +128,8 @@ nnoremap <leader><leader> <c-^>
 nmap <silent> <Leader>cd :lcd %:h<CR>
 " Create the full directory tree containing the current file
 nmap <silent> <Leader>md :!mkdir -p %:p:h<CR>
-
+" Run the fugitive-vim Gstatus command
+nmap <silent> <Leader>s :Gstatus<CR>
 
 "-------------------------------------------------------------------------------
 " MULTIPURPOSE TAB KEY
