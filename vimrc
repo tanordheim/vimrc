@@ -145,6 +145,7 @@ nmap k gk
 nmap ; :CtrlPBuffer<CR>
 " Override default Ctrl-P key
 let g:ctrlp_map = '<leader>t'
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
 
 "-------------------------------------------------------------------------------
 " NERDTREE
