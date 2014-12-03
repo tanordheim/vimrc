@@ -125,11 +125,11 @@ endfunction
 call MapCR()
 nnoremap <leader><leader> <c-^>
 " Change the current directory to the directory containing the current file
-nmap <silent> <Leader>cd :lcd %:h<CR>
+nmap <silent> <leader>cd :lcd %:h<CR>
 " Create the full directory tree containing the current file
-nmap <silent> <Leader>md :!mkdir -p %:p:h<CR>
+nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 " Run the fugitive-vim Gstatus command
-nmap <silent> <Leader>s :Gstatus<CR>
+nmap <silent> <leader>s :Gstatus<CR>
 " Toggle line numbers
 nmap <leader>l :setlocal number!<CR>
 " Toggle paste mode
@@ -144,7 +144,12 @@ nmap k gk
 " Easy access to the Ctrl-P buffer finder
 nmap ; :CtrlPBuffer<CR>
 " Override default Ctrl-P key
-let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_map = '<leader>t'
+
+"-------------------------------------------------------------------------------
+" NERDTREE
+"-------------------------------------------------------------------------------
+nmap <leader>e :NERDTreeToggle<CR>
 
 "-------------------------------------------------------------------------------
 " MULTIPURPOSE TAB KEY
