@@ -130,8 +130,13 @@ nmap <silent> <Leader>cd :lcd %:h<CR>
 nmap <silent> <Leader>md :!mkdir -p %:p:h<CR>
 " Run the fugitive-vim Gstatus command
 nmap <silent> <Leader>s :Gstatus<CR>
+" Toggle line numbers
 nmap <leader>l :setlocal number!<CR>
+" Toggle paste mode
 nmap <leader>o :set paste!<CR>
+" Change vertical movement to not jump around wrapped lines
+nmap j gj
+nmap k gk
 
 "-------------------------------------------------------------------------------
 " MULTIPURPOSE TAB KEY
