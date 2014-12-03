@@ -139,6 +139,14 @@ nmap j gj
 nmap k gk
 
 "-------------------------------------------------------------------------------
+" CTRL-P
+"-------------------------------------------------------------------------------
+" Easy access to the Ctrl-P buffer finder
+nmap ; :CtrlPBuffer<CR>
+" Override default Ctrl-P key
+let g:ctrlp_map = '<Leader>t'
+
+"-------------------------------------------------------------------------------
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
 "-------------------------------------------------------------------------------
