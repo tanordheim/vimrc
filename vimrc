@@ -150,7 +150,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
 "-------------------------------------------------------------------------------
 " SYNTASTIC
 "-------------------------------------------------------------------------------
-let g:syntastic_html_tidy_ignore_errors = [' proprietary attribute ', 'trimming empty <']
+let g:syntastic_html_tidy_ignore_errors = [' proprietary attribute ', 'trimming empty <', 'unescaped &', 'lacks "action', 'is not recognized!', 'discarding unexpected']
 
 "-------------------------------------------------------------------------------
 " NERDTREE
