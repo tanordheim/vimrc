@@ -148,6 +148,11 @@ let g:ctrlp_map = '<leader>t'
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
 
 "-------------------------------------------------------------------------------
+" SYNTASTIC
+"-------------------------------------------------------------------------------
+let g:syntastic_html_tidy_ignore_errors = [' proprietary attribute ', 'trimming empty <']
+
+"-------------------------------------------------------------------------------
 " NERDTREE
 "-------------------------------------------------------------------------------
 nmap <leader>e :NERDTreeToggle<CR>
