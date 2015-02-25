@@ -139,13 +139,15 @@ nmap j gj
 nmap k gk
 
 "-------------------------------------------------------------------------------
-" CTRL-P
+" COMMAND-T
 "-------------------------------------------------------------------------------
-" Easy access to the Ctrl-P buffer finder
-nmap ; :CtrlPBuffer<CR>
-" Override default Ctrl-P key
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
+" Easy access to the Command-T buffer window
+nnoremap <silent> ; :CommandTBuffer<CR>
+" Ignore some files when completing
+set wildignore+=.git
+set wildignore+=bower_components
+set wildignore+=node_modules
+set wildignore+=.DS_Store
 
 "-------------------------------------------------------------------------------
 " SYNTASTIC
