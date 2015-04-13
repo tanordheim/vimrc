@@ -155,6 +155,11 @@ set wildignore+=.DS_Store
 let g:syntastic_html_tidy_ignore_errors = [' proprietary attribute ', 'trimming empty <', 'unescaped &', 'lacks "action', 'is not recognized!', 'discarding unexpected']
 
 "-------------------------------------------------------------------------------
+" VIM-JSX
+"-------------------------------------------------------------------------------
+let g:jsx_ext_required = 0
+
+"-------------------------------------------------------------------------------
 " NERDTREE
 "-------------------------------------------------------------------------------
 nmap <leader>e :NERDTreeToggle<CR>
@@ -222,3 +227,25 @@ command! OpenChangedFiles :call OpenChangedFiles()
 " Insert the current time
 "-------------------------------------------------------------------------------
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
+
+"-------------------------------------------------------------------------------
+" MACVIM
+"-------------------------------------------------------------------------------
+if has("gui_macvim")
+  " Press Ctrl-Tab to switch between open tabs (like browser tabs) to 
+  " the right side. Ctrl-Shift-Tab goes the other way.
+  noremap <C-Tab> :tabnext<CR>
+  noremap <C-S-Tab> :tabprev<CR>
+
+  " Switch to specific tab numbers with Command-number
+  noremap <D-1> :tabn 1<CR>
+  noremap <D-2> :tabn 2<CR>
+  noremap <D-3> :tabn 3<CR>
+  noremap <D-4> :tabn 4<CR>
+  noremap <D-5> :tabn 5<CR>
+  noremap <D-6> :tabn 6<CR>
+  noremap <D-7> :tabn 7<CR>
+  noremap <D-8> :tabn 8<CR>
+  noremap <D-9> :tabn 9<CR>
+  noremap <D-0> :tabn 10<CR>
+endif
