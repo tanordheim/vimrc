@@ -155,9 +155,12 @@ set wildignore+=.DS_Store
 let g:syntastic_html_tidy_ignore_errors = [' proprietary attribute ', 'trimming empty <', 'unescaped &', 'lacks "action', 'is not recognized!', 'discarding unexpected']
 
 "-------------------------------------------------------------------------------
-" VIM-JSX
+" TABULAR
 "-------------------------------------------------------------------------------
-let g:jsx_ext_required = 0
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "-------------------------------------------------------------------------------
 " NERDTREE
