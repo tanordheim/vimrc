@@ -159,6 +159,8 @@ let g:syntastic_html_tidy_ignore_errors = [' proprietary attribute ', 'trimming 
 "-------------------------------------------------------------------------------
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a- :Tabularize /-<CR>
+vmap <Leader>a- :Tabularize /-<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
