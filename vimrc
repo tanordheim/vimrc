@@ -59,6 +59,7 @@ set wildmode=longest,list
 set wildignore+=tmp/**,doc/yardoc/**
 " make tab completion for files/buffers act like bash
 set wildmenu
+set previewheight=30
 let mapleader=","
 
 "-------------------------------------------------------------------------------
