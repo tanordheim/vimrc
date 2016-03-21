@@ -151,9 +151,9 @@ set wildignore+=node_modules
 set wildignore+=.DS_Store
 
 "-------------------------------------------------------------------------------
-" SYNTASTIC
+" NEOCOMPLETE
 "-------------------------------------------------------------------------------
-let g:syntastic_html_tidy_ignore_errors = [' proprietary attribute ', 'trimming empty <', 'unescaped &', 'lacks "action', 'is not recognized!', 'discarding unexpected']
+let g:neocomplete#enable_at_startup = 1
 
 "-------------------------------------------------------------------------------
 " TABULAR
@@ -174,21 +174,6 @@ nmap <Leader>t :CtrlP<CR>
 " NERDTREE
 "-------------------------------------------------------------------------------
 nmap <leader>e :NERDTreeToggle<CR>
-
-"-------------------------------------------------------------------------------
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-"-------------------------------------------------------------------------------
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
 
 "-------------------------------------------------------------------------------
 " ARROW KEYS ARE UNACCEPTABLE
@@ -217,27 +202,6 @@ map <leader>n :call RenameFile()<cr>
 " Show the MD5 of the current buffer
 "-------------------------------------------------------------------------------
 command! -range Md5 :echo system('echo '.shellescape(join(getline(<line1>, <line2>), '\n')) . '| md5')
-
-"-------------------------------------------------------------------------------
-" OpenChangedFiles COMMAND
-" Open a split for each dirty file in git
-"-------------------------------------------------------------------------------
-function! OpenChangedFiles()
-  only " Close all windows, unless they're modified
-  let status = system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
-  let filenames = split(status, "\n")
-  exec "edit " . filenames[0]
-  for filename in filenames[1:]
-    exec "sp " . filename
-  endfor
-endfunction
-command! OpenChangedFiles :call OpenChangedFiles()
-
-"-------------------------------------------------------------------------------
-" InsertTime COMMAND
-" Insert the current time
-"-------------------------------------------------------------------------------
-command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 
 "-------------------------------------------------------------------------------
 " MACVIM
