@@ -98,8 +98,8 @@ augroup END
 "-------------------------------------------------------------------------------
 set t_Co=256 " 256 colors
 set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+" let g:solarized_termcolors=256
+" colorscheme solarized
 
 "-------------------------------------------------------------------------------
 " STATUS LINE
