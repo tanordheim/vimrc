@@ -19,3 +19,6 @@
 [submodule "bundle/neocomplete.vim"]
 	path = bundle/neocomplete.vim
 	url = git://github.com/Shougo/neocomplete.vim.git
+[submodule "bundle/vim-material-theme"]
+	path = bundle/vim-material-theme
+	url = git://github.com/jdkanani/vim-material-theme
