@@ -65,12 +65,10 @@ let mapleader=","
 "-------------------------------------------------------------------------------
 " COLOR
 "-------------------------------------------------------------------------------
-"set t_Co=256 " 256 colors
-"set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
-colorscheme molokai
-let g:rehash=1
+set background=dark
+colorscheme solarized
+let g:airline_powerline_fonts=1
+let g:airline_theme="solarized"
 
 "-------------------------------------------------------------------------------
 " STATUS LINE
