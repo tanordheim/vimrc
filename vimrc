@@ -65,10 +65,12 @@ let mapleader=","
 "-------------------------------------------------------------------------------
 " COLOR
 "-------------------------------------------------------------------------------
-set t_Co=256 " 256 colors
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+"set t_Co=256 " 256 colors
+"set background=dark
+"let g:solarized_termcolors=256
+"colorscheme solarized
+colorscheme molokai
+let g:rehash=1
 
 "-------------------------------------------------------------------------------
 " STATUS LINE
