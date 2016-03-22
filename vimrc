@@ -63,37 +63,6 @@ set previewheight=30
 let mapleader=","
 
 "-------------------------------------------------------------------------------
-" CUSTOM AUTOCMDS
-"-------------------------------------------------------------------------------
-augroup vimrcEx
-  " Clear all autocmds in the group
-  autocmd!
-  autocmd FileType text setlocal textwidth=78
-  " Jump to last cursor position unless it's invalid or in an event handler
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
-  autocmd FileType python set sw=4 sts=4 et
-
-  autocmd! BufRead,BufNewFile *.sass setfiletype sass 
-
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-
-  " Don't syntax highlight markdown because it's often wrong
-  autocmd! FileType mkd setlocal syn=off
-
-  " Leave the return key alone when in command line windows, since it's used
-  " to run commands there.
-  autocmd! CmdwinEnter * :unmap <cr>
-  autocmd! CmdwinLeave * :call MapCR()
-augroup END
-
-"-------------------------------------------------------------------------------
 " COLOR
 "-------------------------------------------------------------------------------
 set t_Co=256 " 256 colors
@@ -206,6 +175,15 @@ nmap <Leader>t :CtrlP<CR>
 " NERDTREE
 "-------------------------------------------------------------------------------
 map <C-n> :NERDTreeToggle<CR>
+
+"-------------------------------------------------------------------------------
+" GO LANGUAGE
+"-------------------------------------------------------------------------------
+autocmd BufNewFile,BufRead *.go setlocal noet ts=2 sw=2 sts=2
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+autocmd FileType go nmap <Leader>r <Plug>(go-run)
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
 
 "-------------------------------------------------------------------------------
 " ARROW KEYS ARE UNACCEPTABLE
