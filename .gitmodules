@@ -28,3 +28,6 @@
 [submodule "bundle/vim-airline-themes"]
 	path = bundle/vim-airline-themes
 	url = git://github.com/vim-airline/vim-airline-themes.git
+[submodule "bundle/neosnippet.vim"]
+	path = bundle/neosnippet.vim
+	url = git://github.com/Shougo/neosnippet.vim.git
