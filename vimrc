@@ -1,103 +1,238 @@
-" This file is copied/inspired by Gary Bernhardt's .vimrc file
-" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
-"
-" vim:set ts=2 sts=2 sw=2 expandtab:
-
 call pathogen#infect()
 
 "-------------------------------------------------------------------------------
-" BASIC EDITING CONFIGURATION
+" GENERAL
 "-------------------------------------------------------------------------------
+
+" make sure we are in noncompatible mode
 set nocompatible
-" allow unsaved background buffers and remember marks/undo for them
-set hidden
-" remember more commands and search history
+
+" set how many lines of history vim has to remember
 set history=10000
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set laststatus=2
-set showmatch
-set incsearch
-set hlsearch
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
-" highlight current line
-set cursorline
-set cmdheight=2
-set switchbuf=useopen
-set numberwidth=5
-set showtabline=2
-set winwidth=79
-" This makes RVM work inside Vim. I have no idea why.
-set shell=bash
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
-" keep more context when scrolling off the end of a buffer
-set scrolloff=3
-" Store temporary files in a central spot
-set backup
-set backupdir=~/.tmp
-set directory=~/.tmp
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
-" Enable highlighting for syntax
-syntax on
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
-" Also load indent files, to automatically do language-dependent indenting.
-filetype plugin indent on
-" use emacs-style tab completion when selecting files, etc
-set wildmode=longest,list
-" ignore some files when completing file names
-set wildignore+=tmp/**,doc/yardoc/**
-" make tab completion for files/buffers act like bash
-set wildmenu
-set previewheight=30
+
+" enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" set map leader
 let mapleader=","
+let g:mapleader=","
 
 "-------------------------------------------------------------------------------
-" COLOR
+" VIM USER INTERFACE
 "-------------------------------------------------------------------------------
+
+" make sure cursor is always vertically centered on j/k moves
+set so=999
+
+" add vertical lines on columns
+set colorcolumn=80,120
+
+" turn on wildmenu, makes tab completion for files/buffers act like bash
+set wildmenu
+
+" highlight current line
+set cursorline
+
+" completion options; select longest + show menu even if a single match is
+" found
+set completeopt=longest,menuone
+
+" ignore compiled and temp files
+set wildignore+=tmp/**,*.o,*~,.git\*,.DS_Store
+
+" show line, column number and relative position within a file in the status
+" line
+set ruler
+
+" show line numbers
+set number
+
+" show partial commands (or size of selection in visual mode) in status line
+set showcmd
+
+" a buffer bcomes hidden when it's abandoned
+set hidden
+
+" enable mouse if available
+if has("mouse")
+  set mouse=a
+endif
+
+" allow smarter completion by infering the case
+set infercase
+
+" ignore case when searching
+set ignorecase
+
+" when searching, try to be smart about cases
+set smartcase
+
+" highlight search results
+set hlsearch
+
+" makes search act like search in modern browsers
+set incsearch
+
+" don't redraw while executing macros (for performance)
+set lazyredraw
+
+" for regular expressions, turn magic on
+set magic
+
+" show matching brackets when text indicator is over them
+set showmatch
+
+" how many tenths of a second to blink when matching brackets
+set mat=2
+
+" no annoying sounds on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" make sure extra margin on left side is removed
+set foldcolumn=0
+
+"-------------------------------------------------------------------------------
+" COLORS AND FONTS
+"-------------------------------------------------------------------------------
+
+" enable syntax highlighting
+syntax enable
+
+" use dark backgrounds
 set background=dark
+
+" set color scheme
 colorscheme solarized
+
+" use airline for a smoother status bar
 let g:airline_powerline_fonts=1
 let g:airline_theme="solarized"
 
-"-------------------------------------------------------------------------------
-" STATUS LINE
-"-------------------------------------------------------------------------------
-set statusline=%f\ %m\ %{fugitive#statusline()}\ %y%=%l,%c\ %P
+" set extra options when running in gui mode
+if has("gui_running")
+  set guioptions-=T
+  set guioptions-=e
+  set t_Co=256
+  set guitablabel=%M\ %t
+endif
+
+" set utf8 sas standard encoding
+set encoding=utf8
+
+" use unix as the standard file type
+set ffs=unix,dos,mac
+
+" highlight trailing spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 "-------------------------------------------------------------------------------
-" MISC KEY MAPS
+" FILES, BACKUPS AND UNDO
 "-------------------------------------------------------------------------------
-map <leader>y "*y
-" Move around splits with <c-hjkl>
+
+" turn backup off, since most stuff is in source control anyway
+set nobackup
+set nowb
+set noswapfile
+
+" remember stuff between sessions
+"
+" '20  - remember marks for 20 previous files
+" \"50 - save 50 lines for each register
+" :20  - remember 20 items in command-line history
+" /20  - remember 20 items in search history
+" %    - remember the buffer list (if vim started without a file arg)
+" n    - set name of viminfo file
+set viminfo='20,\"50,:20,/20,%,n~/.viminfo
+
+"-------------------------------------------------------------------------------
+" TEXT, TAB AND INDENTATION
+"-------------------------------------------------------------------------------
+
+" use spaces instead of tabs
+set expandtab
+
+" be smart when using tabs
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" round indent to multiple of shiftwidth for > and < commands
+set shiftround
+
+" linebreak on 500 characters
+set lbr
+set tw=500
+
+" enable auto intendation
+set autoindent
+
+" enable smart indentation
+set smartindent
+
+" don't wrap lines
+set nowrap
+
+"-------------------------------------------------------------------------------
+" MOVING AROUND, TABS, WINDOWS AND BUFFERS
+"-------------------------------------------------------------------------------
+
+" treat long lines as break lines (usefil when moving around in them)
+map j gj
+map k gk
+
+" disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" smart way to move between windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-" Insert a hash rocket with <c-l>
-imap <c-l> <space>=><space>
-" Can't be bothered to understand ESC vs <c-c> in insert mode
-imap <c-c> <esc>
-" Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
-nnoremap <leader><leader> <c-^>
-" Change the current directory to the directory containing the current file
+
+" switch cwd to the directory of the open buffer
 nmap <silent> <leader>cd :lcd %:h<CR>
-" Create the full directory tree containing the current file
+
+" create the full directory tree to the current buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
+
+" return to last editing position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" remember info about open buffers on close
+set viminfo^=%
+
+"-------------------------------------------------------------------------------
+" STATUS LINE
+"-------------------------------------------------------------------------------
+
+" always show the status line
+set laststatus=2
+
+" format the status line
+set statusline=%f\ %m\ %{fugitive#statusline()}\ %y%=%l,%c\ %P
+
+"-------------------------------------------------------------------------------
+" MISC
+"-------------------------------------------------------------------------------
+
+" toggle paste mode on/off
+nmap <leader>o :set paste!<CR>
+
+
 " Run the fugitive-vim Gstatus command
 nmap <silent> <leader>s :Gstatus<CR>
 " Toggle line numbers
@@ -109,24 +244,15 @@ nmap j gj
 nmap k gk
 
 "-------------------------------------------------------------------------------
-" COMMAND-T
-"-------------------------------------------------------------------------------
-" Easy access to the Command-T buffer window
-nnoremap <silent> ; :CommandTBuffer<CR>
-" Ignore some files when completing
-set wildignore+=.git
-set wildignore+=bower_components
-set wildignore+=node_modules
-set wildignore+=.DS_Store
-
-"-------------------------------------------------------------------------------
 " NEOCOMPLETE
 "-------------------------------------------------------------------------------
+
 let g:neocomplete#enable_at_startup = 1
 
 "-------------------------------------------------------------------------------
 " TAGBAR
 "-------------------------------------------------------------------------------
+
 let g:tagbar_type_go = {  
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
@@ -159,6 +285,7 @@ nmap <F3> :TagbarToggle<CR>
 "-------------------------------------------------------------------------------
 " TABULAR
 "-------------------------------------------------------------------------------
+
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a- :Tabularize /-<CR>
@@ -169,68 +296,21 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 "-------------------------------------------------------------------------------
 " CTRL+P
 "-------------------------------------------------------------------------------
+
 nmap <Leader>t :CtrlP<CR>
 
 "-------------------------------------------------------------------------------
 " NERDTREE
 "-------------------------------------------------------------------------------
+
 nmap <F2> :NERDTreeToggle<CR>
 
 "-------------------------------------------------------------------------------
 " GO LANGUAGE
 "-------------------------------------------------------------------------------
+
 autocmd BufNewFile,BufRead *.go setlocal noet ts=2 sw=2 sts=2
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
 autocmd FileType go nmap <Leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>t <Plug>(go-test)
-
-"-------------------------------------------------------------------------------
-" ARROW KEYS ARE UNACCEPTABLE
-"-------------------------------------------------------------------------------
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-
-"-------------------------------------------------------------------------------
-" RENAME CURRENT FILE
-"-------------------------------------------------------------------------------
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-map <leader>n :call RenameFile()<cr>
-
-"-------------------------------------------------------------------------------
-" Md5 COMMAND
-" Show the MD5 of the current buffer
-"-------------------------------------------------------------------------------
-command! -range Md5 :echo system('echo '.shellescape(join(getline(<line1>, <line2>), '\n')) . '| md5')
-
-"-------------------------------------------------------------------------------
-" MACVIM
-"-------------------------------------------------------------------------------
-if has("gui_macvim")
-  " Press Ctrl-Tab to switch between open tabs (like browser tabs) to 
-  " the right side. Ctrl-Shift-Tab goes the other way.
-  noremap <C-Tab> :tabnext<CR>
-  noremap <C-S-Tab> :tabprev<CR>
-
-  " Switch to specific tab numbers with Command-number
-  noremap <D-1> :tabn 1<CR>
-  noremap <D-2> :tabn 2<CR>
-  noremap <D-3> :tabn 3<CR>
-  noremap <D-4> :tabn 4<CR>
-  noremap <D-5> :tabn 5<CR>
-  noremap <D-6> :tabn 6<CR>
-  noremap <D-7> :tabn 7<CR>
-  noremap <D-8> :tabn 8<CR>
-  noremap <D-9> :tabn 9<CR>
-  noremap <D-0> :tabn 10<CR>
-endif
