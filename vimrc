@@ -54,6 +54,10 @@ set showcmd
 " a buffer bcomes hidden when it's abandoned
 set hidden
 
+" configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
 " enable mouse if available
 if has("mouse")
   set mouse=a
