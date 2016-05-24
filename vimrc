@@ -23,7 +23,7 @@ let g:mapleader=","
 "-------------------------------------------------------------------------------
 
 " add vertical lines on columns
-set colorcolumn=80,120
+set colorcolumn=80
 
 " turn on wildmenu, makes tab completion for files/buffers act like bash
 set wildmenu
@@ -259,7 +259,7 @@ let g:neosnippet#disable_runtime_snippets = { "_": 1, }
 " TAGBAR
 "-------------------------------------------------------------------------------
 
-let g:tagbar_type_go = {  
+let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
 		\ 'p:package',
