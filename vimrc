@@ -22,9 +22,6 @@ let g:mapleader=","
 " VIM USER INTERFACE
 "-------------------------------------------------------------------------------
 
-" make sure cursor is always vertically centered on j/k moves
-set so=999
-
 " add vertical lines on columns
 set colorcolumn=80,120
 
@@ -174,9 +171,9 @@ set tabstop=4
 " round indent to multiple of shiftwidth for > and < commands
 set shiftround
 
-" linebreak on 500 characters
+" linebreak on 80 characters
 set lbr
-set tw=500
+set tw=80
 
 " enable auto intendation
 set autoindent
