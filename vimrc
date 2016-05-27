@@ -23,7 +23,7 @@ let g:mapleader=","
 "-------------------------------------------------------------------------------
 
 " add vertical lines on columns
-set colorcolumn=80
+set colorcolumn=100
 
 " turn on wildmenu, makes tab completion for files/buffers act like bash
 set wildmenu
