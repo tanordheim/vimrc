@@ -329,3 +329,9 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
 autocmd FileType go nmap <Leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>t <Plug>(go-test)
+
+"-------------------------------------------------------------------------------
+" UNO LANGUAGE
+"-------------------------------------------------------------------------------
+autocmd BufNewFile,BufRead,BufReadPost *.uno set syntax=cs
+autocmd FileType uno setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
