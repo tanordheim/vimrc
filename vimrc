@@ -36,7 +36,7 @@ set cursorline
 set completeopt=longest,menuone
 
 " ignore compiled and temp files
-set wildignore+=tmp/**,*.o,*~,.git\*,.DS_Store
+set wildignore+=tmp/**,*.o,*~,.git\*,.DS_Store,node_modules,vendor
 
 " show line, column number and relative position within a file in the status
 " line
@@ -341,7 +341,7 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 " CTRL+P
 "-------------------------------------------------------------------------------
 
-nmap <Leader>t :CtrlP<CR>
+nmap <Leader>o :CtrlP<CR>
 
 "-------------------------------------------------------------------------------
 " NERDTREE
@@ -357,9 +357,7 @@ autocmd BufNewFile,BufRead *.go setlocal noet ts=2 sw=2 sts=2
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
 autocmd FileType go nmap <Leader>r <Plug>(go-run)
-autocmd FileType go nmap <Leader>ta <Plug>(go-test)
-autocmd FileType go nmap <Leader>ti <Plug>(go-test)
-autocmd FileType go nmap <Leader>tu <Plug>(go-test)
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
 
 "-------------------------------------------------------------------------------
 " UNO LANGUAGE
