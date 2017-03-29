@@ -107,11 +107,11 @@ syntax enable
 set background=dark
 
 " set color scheme
-colorscheme solarized
+colorscheme molokai
 
 " use airline for a smoother status bar
 let g:airline_powerline_fonts=1
-let g:airline_theme="solarized"
+let g:airline_theme="molokai"
 
 " set extra options when running in gui mode
 if has("gui_running")
