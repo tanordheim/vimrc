@@ -23,7 +23,7 @@ let g:mapleader=","
 "-------------------------------------------------------------------------------
 
 " add vertical lines on columns
-set colorcolumn=100
+set colorcolumn=120
 
 " turn on wildmenu, makes tab completion for files/buffers act like bash
 set wildmenu
@@ -171,9 +171,8 @@ set tabstop=4
 " round indent to multiple of shiftwidth for > and < commands
 set shiftround
 
-" linebreak on 80 characters
-set lbr
-set tw=80
+" linebreak on 120 characters
+set tw=120
 
 " enable auto intendation
 set autoindent
