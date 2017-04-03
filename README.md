@@ -9,7 +9,7 @@ The following software should be installed for all the vim extensions to work pr
 
 ## Required fonts
 
-The DejaVu Sans Mono for Powerline font must be installed.
+The Iosevka Term Regular font must be installed.
 
 ## Inspiration
 
