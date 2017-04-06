@@ -322,5 +322,12 @@ autocmd FileType go nmap <Leader>t <Plug>(go-test)
 "-------------------------------------------------------------------------------
 " UNO LANGUAGE
 "-------------------------------------------------------------------------------
+
 autocmd BufNewFile,BufRead,BufReadPost *.uno set syntax=cs
 autocmd FileType uno setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+
+"-------------------------------------------------------------------------------
+" DOCKER
+"-------------------------------------------------------------------------------
+
+autocmd BufNewFile,BufRead,BufReadPost Dockerfile set syntax=Dockerfile

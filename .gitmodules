@@ -34,3 +34,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git://github.com/vim-syntastic/syntastic.git
+[submodule "bundle/Dockerfile"]
+	path = bundle/Dockerfile
+	url = git://github.com/ekalinin/Dockerfile.vim
