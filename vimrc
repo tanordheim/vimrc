@@ -306,8 +306,12 @@ nmap <F2> :NERDTreeTabsToggle<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+nmap <Leader>c :SyntasticCheck<CR>
 
 "-------------------------------------------------------------------------------
 " GO LANGUAGE
@@ -318,6 +322,8 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
 autocmd FileType go nmap <Leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>t <Plug>(go-test)
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
 
 "-------------------------------------------------------------------------------
 " UNO LANGUAGE
