@@ -40,3 +40,6 @@
 [submodule "bundle/Jenkinsfile-vim-syntax"]
 	path = bundle/Jenkinsfile-vim-syntax
 	url = git://github.com/martinda/Jenkinsfile-vim-syntax.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = git://github.com/leafgarland/typescript-vim.git
