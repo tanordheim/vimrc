@@ -232,7 +232,6 @@ set statusline=%f\ %m\ %{fugitive#statusline()}\ %y%=%l,%c\ %P
 " toggle paste mode on/off
 nmap <leader>o :set paste!<CR>
 
-
 " Run the fugitive-vim Gstatus command
 nmap <silent> <leader>s :Gstatus<CR>
 " Toggle line numbers
@@ -306,10 +305,11 @@ nmap <F2> :NERDTreeTabsToggle<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 nmap <Leader>c :SyntasticCheck<CR>
 
@@ -337,3 +337,14 @@ autocmd FileType uno setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 "-------------------------------------------------------------------------------
 
 autocmd BufNewFile,BufRead,BufReadPost Dockerfile set syntax=Dockerfile
+
+"-------------------------------------------------------------------------------
+" TYPESCRIPT
+"-------------------------------------------------------------------------------
+
+" Support inline HTML in typescript strings
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces
+
+" Disable default quickfix in Tsuquyomi
+let g:tsuquyomi_disable_quickfix = 1
