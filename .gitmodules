@@ -55,3 +55,6 @@
 [submodule "bundle/scss-syntax"]
 	path = bundle/scss-syntax
 	url = git://github.com/cakebaker/scss-syntax.vim
+[submodule "bundle/vim-coloresque"]
+	path = bundle/vim-coloresque
+	url = git://github.com/gko/vim-coloresque.git
